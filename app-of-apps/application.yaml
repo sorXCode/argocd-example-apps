@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+spec:
+  project: default
+
+  destination:
+    server: https://kubernetes.default.svc
+
+  source:
+    # ------------------------------------------------------------
+    # SOURCE 1 - KUSTOMIZE
+    #
+    # This is the source that actually owns the image we want
+    # Image Updater to modify.
+    # ------------------------------------------------------------
+    repoURL: https://github.com/sorxcode/argocd-example-apps.git
+    targetRevision: master
+    path: manual-apps
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
