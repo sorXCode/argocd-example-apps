@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: image-updater-3654
+  namespace: argocd
+spec:
+  project: default
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: image-updater-3654
+
+  source:
+    # ------------------------------------------------------------
+    # SOURCE 1 - KUSTOMIZE
+    #
+    # This is the source that actually owns the image we want
+    # Image Updater to modify.
+    # ------------------------------------------------------------
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: master
+    path: kustomize-guestbook
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
