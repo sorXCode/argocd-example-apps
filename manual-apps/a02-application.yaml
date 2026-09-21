@@ -17,7 +17,7 @@ spec:
     # This is the source that actually owns the image we want
     # Image Updater to modify.
     # ------------------------------------------------------------
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/sorxcode/argocd-example-apps.git
     targetRevision: master
     path: kustomize-guestbook
 

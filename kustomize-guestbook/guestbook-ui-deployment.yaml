@@ -10,6 +10,7 @@ spec:
       app: guestbook-ui
   template:
     metadata:
+      annotations: {}
       labels:
         app: guestbook-ui
     spec:
